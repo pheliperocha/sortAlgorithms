@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Algoritmos de Ordenação</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <style type="text/css">
+            .jumbotron {
+                text-align: center;
+            }
+
+            .well {
+                word-break: break-all;
+            }
+
+            .well.false {
+                background: #ea8484;
+            }
+
+            .info {
+                text-align: left;
+            }
+
+            .info span {
+                float: right;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <section class="container">
+
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-md-offset-2">
+
+                    <br />
+
+                    <div class="jumbotron">
+
+                        <h2>Algoritmos de Ordenação</h2>
+                        <hr />
+
+                        <form>
+
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="listValores" placeholder="Lista de valores do vetor separados por vírgula...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info" id="gerar" type="button">Gerar</button>
+                                </span>
+                            </div>
+
+                            <br />
+
+                            <label class="radio-inline"><input type="radio" name="optradio" value="insertion" checked>Insertion Sort</label>
+                            <label class="radio-inline"><input type="radio" name="optradio" value="selection">Selection Sort</label>
+                            <label class="radio-inline"><input type="radio" name="optradio" value="bubble">Bubble Sort</label>
+                            <label class="radio-inline"><input type="radio" name="optradio" value="heap">Heap Sort</label>
+                            <label class="radio-inline"><input type="radio" name="optradio" value="merge">Merge Sort</label>
+                            <label class="radio-inline"><input type="radio" name="optradio" value="quick">Quick Sort</label>
+
+                            <br /><br />
+
+                            <input type="button" class="btn btn-primary" id="order" value="Ordenar">
+
+                            <br /><br />
+
+                            <div id="content"></div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+        <script type="text/javascript">
+            (function () {
+                $(document).on("click", "#gerar", function() {
+
+                    var vet = [];
+
+                    for (var i = 0; i < 10; i++) {
+                        var random = Math.floor(Math.random() * (100 - 0) + 0);
+                        vet.push(random);
+                    }
+
+                    $("#listValores").val(vet);
+
+                });
+
+                $("#order").click(function() {
+
+                    var opt = $("input[name='optradio']:checked").val();
+                    var list = $("#listValores").val();
+                    var arr = list.split(",");
+
+                    var arr = arr.map(function (x) {
+                        return parseInt(x, 10);
+                    });
+
+                    switch(opt) {
+                        case "insertion":
+
+                            var sortedArr = insertionSort(arr);
+                            var isSorted = checkIfIsSorted(sortedArr);
+
+                            insertInfo(sortedArr, isSorted, "Insertion Sort");
+
+                            break;
+                        case "selection":
+                            var sortedArr = selectionSort(arr);
+                            var isSorted = checkIfIsSorted(sortedArr);
+
+                            insertInfo(sortedArr, isSorted, "Selection Sort");
+
+                            break;
+                        case "bubble":
+                            var sortedArr = bubbleSort(arr);
+                            var isSorted = checkIfIsSorted(sortedArr);
+
+                            insertInfo(sortedArr, isSorted, "Bubble Sort");
+
+                            break;
+                        case "heap":
+                            var sortedArr = heapSort(arr);
+                            var isSorted = checkIfIsSorted(sortedArr);
+
+                            insertInfo(sortedArr, isSorted, "Heap Sort");
+
+                            break;
+                        case "merge":
+                            var sortedArr = mergeSort(arr);
+                            var isSorted = checkIfIsSorted(sortedArr);
+
+                            insertInfo(sortedArr, isSorted, "Merge Sort");
+
+                            break;
+                        case "quick":
+                            var sortedArr = quickSort(arr);
+                            var isSorted = checkIfIsSorted(sortedArr);
+
+                            insertInfo(sortedArr, isSorted, "Quick Sort");
+
+                            break;
+                    }
+
+                });
+
+                function insertionSort(vet) {
+                    return vet;
+
+                }
+
+                function selectionSort(vet) {
+                    return vet;
+                }
+
+                function bubbleSort(vet) {
+                    return vet;
+                }
+
+                function heapSort(vet) {
+                    return vet;
+                }
+
+                function mergeSort(vet) {
+                    return vet;
+                }
+
+                function quickSort(vet) {
+                    return vet;
+                }
+
+                function checkIfIsSorted(arr) {
+                    var sorted = true;
+
+                    for (var i = 0; i < arr.length - 1; i++) {
+                        if (arr[i] > arr[i+1]) {
+                            sorted = false;
+                            break;
+                        }
+                    }
+
+                    return sorted;
+                }
+
+                function insertInfo(vet, sorted, type) {
+
+                    var html = "<div class=\"info\">" + type + " <span></span></div><div class=\"well well-sm " + sorted + "\">" + vet + "</div>";
+
+                    $("#content").append(html);
+
+                }
+
+            })();
+        </script>
+
+    </body>
+</html>
