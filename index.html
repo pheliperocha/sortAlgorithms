@@ -175,6 +175,28 @@
                 }
 
                 function selectionSort(vet) {
+
+                    var pivot, aux, i, j;
+                    var tamanho = vet.length;
+
+                    for (i = 0; i < tamanho - 1; i++) {
+
+                        pivot = i;
+
+                        for (j = i+1; j < tamanho; j++) {
+
+                            if (vet[pivot] > vet[j]) {
+                                pivot = j;
+                            }
+
+                        }
+
+                        aux = vet[i];
+                        vet[i] = vet[pivot];
+                        vet[pivot] = aux;
+
+                    }
+
                     return vet;
                 }
 
