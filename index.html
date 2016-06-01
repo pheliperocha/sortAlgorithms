@@ -155,6 +155,21 @@
                 });
 
                 function insertionSort(vet) {
+
+                    var pivot, i, j;
+                    var tamanho = vet.length;
+
+                    for (i = 1; i < tamanho; i++) {
+                        pivot = vet[i];
+
+                        j = i - 1;
+                        while(j >= 0 && pivot < vet[j]) {
+                            vet[j+1] = vet[j];
+                            j--;
+                        }
+                        vet[j+1] = pivot;
+                    }
+
                     return vet;
 
                 }
