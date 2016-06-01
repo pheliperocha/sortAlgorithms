@@ -201,6 +201,24 @@
                 }
 
                 function bubbleSort(vet) {
+
+                    var pivot, aux, i, j;
+                    var tamanho = vet.length;
+
+                    for (i = tamanho - 1; i >= 1; i--) {
+
+                        for (j = 0; j < i; j++) {
+
+                            if (vet[j] > vet[j+1]) {
+                                aux = vet[j];
+                                vet[j] = vet[j+1];
+                                vet[j+1] = aux;
+                            }
+
+                        }
+
+                    }
+
                     return vet;
                 }
 
